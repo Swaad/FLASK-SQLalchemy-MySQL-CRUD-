@@ -9,10 +9,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql+mysqlconnector://root:root#1234@l
 db = SQLAlchemy(app)
 #db.init_app(app)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
 # engine = create_engine('mysql+mysqlconnector://root:root#1234@localhost/test_scoring', echo=False)
-
 
 @app.route('/post', methods=["GET", "POST"])
 def hello_world():
@@ -33,7 +30,7 @@ def hello_world():
         # customers.read_by_id(1)
         # customers.update_data("Neon", "Neon_rocks also mainul")
         # read_all = customers.read_all()
-        return "row added"
+        return "row added done"
     except Exception as e:
         print(e)
         return str(e)
