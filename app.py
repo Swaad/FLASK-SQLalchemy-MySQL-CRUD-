@@ -11,6 +11,29 @@ db = SQLAlchemy(app)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # engine = create_engine('mysql+mysqlconnector://root:root#1234@localhost/test_scoring', echo=False)
 
+@app.route("/asd", methods=["GET", "POST"])
+def asd():
+    try:
+        if request.method == 'POST':
+            json_data = request.get_json()
+            username = json_data["user_name"]
+            email = json_data["email"]
+            print(username)
+            print(email)
+
+
+        print("API Has been hit")
+        return jsonify(
+            {"message": "Hello", "severity": "danger"}
+        )
+    except Exception as e:
+        print(e)
+        return jsonify(
+            {"message": "Hello", "severity": "danger"}
+        )
+
+
+
 @app.route('/post', methods=["GET", "POST"])
 def hello_world():
     # put application's code here
@@ -114,4 +137,5 @@ class Customers(db.Model):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.debug = True
+    app.run(host="0.0.0.0")
